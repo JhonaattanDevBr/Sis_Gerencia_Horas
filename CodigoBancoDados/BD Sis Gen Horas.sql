@@ -10,7 +10,7 @@ create table Controle(
 
 create table Projetos(
 	idproj int identity(100,1) not null,
-	notProj varchar(40) not null,
+	nomeProj varchar(40) not null,
 	inicioProj date not null,
 	finalProj date,
 	idControle int,
