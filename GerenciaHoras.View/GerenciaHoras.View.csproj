@@ -52,6 +52,12 @@
     <Compile Include="Formularios\Fm_Cadastro.Designer.cs">
       <DependentUpon>Fm_Cadastro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Fm_Historico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Fm_Historico.Designer.cs">
+      <DependentUpon>Fm_Historico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interface Principal\Fm_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\Fm_Cadastro.resx">
       <DependentUpon>Fm_Cadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Fm_Historico.resx">
+      <DependentUpon>Fm_Historico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interface Principal\Fm_Principal.resx">
       <DependentUpon>Fm_Principal.cs</DependentUpon>
@@ -87,6 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciaHoras.Control\GerenciaHoras.Control.csproj">
+      <Project>{7211cf81-83fc-4945-bbe8-9030a91ef0cf}</Project>
+      <Name>GerenciaHoras.Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GerenciaHoras.Model\GerenciaHoras.Model.csproj">
+      <Project>{ac7abd78-b8ce-4f9a-aa3b-e278b66d5fc5}</Project>
+      <Name>GerenciaHoras.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

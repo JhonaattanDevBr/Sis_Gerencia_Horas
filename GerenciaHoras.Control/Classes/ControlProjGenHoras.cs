@@ -12,6 +12,7 @@ namespace GerenciaHoras.Control
         private string _nomeProjeto;
         private string _inicioProjeto;
         private string _finalProjeto;
+        private string _horaInicioProjeto;
         private string _idCont;
 
         public string IdProjeto
@@ -36,6 +37,19 @@ namespace GerenciaHoras.Control
         {
             get { return _finalProjeto; }
             set { _finalProjeto = value; }
+        }
+
+        public string HoraInicioProjeto
+        {
+            get { return _horaInicioProjeto; }
+            set { _horaInicioProjeto = value; }
+        }
+
+        public bool Preenchido()
+        {
+            if (string.IsNullOrEmpty(NomeProjeto))
+            { return false; }
+            else { return true; }
         }
     }
 }

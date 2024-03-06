@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace GerenciaHoras.Model
 {
-    public class Class1
+    public class BancoDeDados
     {
+        public string chaveConexao = @"Data Source=JHONATAN\SQLEXPRESS;Initial Catalog=Bd_GerenciaHoras;Integrated Security=True";
     }
 }

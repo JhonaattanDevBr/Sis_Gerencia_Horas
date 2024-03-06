@@ -76,6 +76,7 @@
             this.TxtNomeProjeto.Name = "TxtNomeProjeto";
             this.TxtNomeProjeto.Size = new System.Drawing.Size(200, 23);
             this.TxtNomeProjeto.TabIndex = 3;
+            this.TxtNomeProjeto.TextChanged += new System.EventHandler(this.TxtNomeProjeto_TextChanged);
             this.TxtNomeProjeto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNomeProjeto_KeyPress);
             // 
             // TxtDataInicio
@@ -113,6 +114,7 @@
             this.BtnAdicionarProjeto.TabIndex = 6;
             this.BtnAdicionarProjeto.Text = "Adicionar Projeto";
             this.BtnAdicionarProjeto.UseVisualStyleBackColor = false;
+            this.BtnAdicionarProjeto.Click += new System.EventHandler(this.BtnAdicionarProjeto_Click);
             // 
             // BtnCancelar
             // 
