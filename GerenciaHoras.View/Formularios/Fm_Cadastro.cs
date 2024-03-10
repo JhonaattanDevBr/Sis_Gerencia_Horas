@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GerenciaHoras.Control;
+using GerenciaHoras.Model;
 
 namespace GerenciaHoras.View.Formularios
 {
@@ -28,6 +29,7 @@ namespace GerenciaHoras.View.Formularios
         }
 
         ControlProjGenHoras _contProj = new ControlProjGenHoras();
+        ControlContGenHoras _contCont = new ControlContGenHoras();
 
         private void BtnAdicionarProjeto_Click(object sender, EventArgs e)
         {
@@ -35,7 +37,27 @@ namespace GerenciaHoras.View.Formularios
             bool estaPreenchido = _contProj.Preenchido();
             if (estaPreenchido)
             {
-                MessageBox.Show("Campo preenchido", "Parabéns");
+                string dataFormatada = _contCont.InverterData(TxtDataInicio.Text);
+                _contCont.HoraInicial = TxtHoraInicio.Text;
+                _contCont.DiaTrabalhado = dataFormatada;
+
+                _contProj.HoraInicioProjeto = TxtHoraInicio.Text;
+                _contProj.NomeProjeto = TxtNomeProjeto.Text;
+                _contProj.InicioProjeto = dataFormatada;
+
+                ModelContGenHoras _modControle = new ModelContGenHoras();
+                bool[] cadastro = new bool[2];
+                cadastro[0] = _modControle.GerarControleInicial(_contCont);
+                if (cadastro[0])
+                {
+                    MessageBox.Show("Cadastro concluido", "Parabéns");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Algo deu errado!", "Erro");
+                }
+                
 
             }
             else

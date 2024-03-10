@@ -4,7 +4,7 @@ create table Controle(
 	idCont int identity(100,1) not null,
 	dia date not null,
 	horaIni time not null,
-	horaFin time not null,
+	horaFin time, Isso não pode ser not null
 	primary key (idCont)
 )
 
