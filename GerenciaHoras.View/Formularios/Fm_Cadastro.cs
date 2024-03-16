@@ -28,48 +28,49 @@ namespace GerenciaHoras.View.Formularios
             TxtHoraInicio.Text = hora;
         }
 
-        ControlProjGenHoras _contProj = new ControlProjGenHoras();
-        ControlContGenHoras _contCont = new ControlContGenHoras();
+        ControlProjGenHoras _ctlProjeto = new ControlProjGenHoras();
+        ControlContGenHoras _ctlControle = new ControlContGenHoras();
 
         private void BtnAdicionarProjeto_Click(object sender, EventArgs e)
         {
-            
-            bool estaPreenchido = _contProj.Preenchido();
-            if (estaPreenchido)
+            bool campoPreenchido = _ctlProjeto.Preenchido();
+            if (campoPreenchido)
             {
-                string dataFormatada = _contCont.InverterData(TxtDataInicio.Text);
-                _contCont.HoraInicial = TxtHoraInicio.Text;
-                _contCont.DiaTrabalhado = dataFormatada;
+                string dataFormatada = _ctlControle.InverterData(TxtDataInicio.Text);
 
-                _contProj.HoraInicioProjeto = TxtHoraInicio.Text;
-                _contProj.NomeProjeto = TxtNomeProjeto.Text;
-                _contProj.InicioProjeto = dataFormatada;
+                _ctlControle.DiaTrabalhado = dataFormatada;
+                _ctlControle.HoraInicial = TxtHoraInicio.Text;
 
-                ModelContGenHoras _modControle = new ModelContGenHoras();
-                bool[] cadastro = new bool[2];
-                cadastro[0] = _modControle.GerarControleInicial(_contCont);
-                if (cadastro[0])
+                _ctlProjeto.NomeProjeto = TxtNomeProjeto.Text;
+                _ctlProjeto.InicioProjeto = dataFormatada;
+
+                ModelContGenHoras _mdlControle = new ModelContGenHoras();
+                ModelProjGenHoras _mdlProjeto = new ModelProjGenHoras();
+
+                bool[] etapasCad = new bool[2];
+                etapasCad[0] = _mdlControle.GerarControleInicial(_ctlControle);
+                etapasCad[1] = _mdlProjeto.CadastrarNovoProjeto(_ctlProjeto);
+                if (etapasCad[0] && etapasCad[1])
                 {
-                    MessageBox.Show("Cadastro concluido", "Parabéns");
+                    MessageBox.Show("Cadastro concluido.", "Operação realizada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Algo deu errado!", "Erro");
+                    MessageBox.Show("Não foi possivel realizar o cadastro.", "Operação não realizada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Close();
                 }
-                
-
             }
             else
             {
-                MessageBox.Show("É necessário que o campo nome seja preenchido para incluir um novo projeto.", "ATENÇÃO");
+                MessageBox.Show("Informe o nome do projeto.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 TxtNomeProjeto.Focus();
             }
         }
 
         private void TxtNomeProjeto_TextChanged(object sender, EventArgs e)
         {
-            _contProj.NomeProjeto = TxtNomeProjeto.Text;
+            _ctlProjeto.NomeProjeto = TxtNomeProjeto.Text;
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -83,6 +84,15 @@ namespace GerenciaHoras.View.Formularios
             {
                 e.Handled = true;
             }
+            else if(e.KeyChar == 13)
+            {
+                this.BtnAdicionarProjeto_Click(sender, e);
+            }
+        }
+
+        private void Fm_Cadastro_Enter(object sender, EventArgs e)
+        {
+            this.BtnAdicionarProjeto_Click(sender, e);
         }
     }
 }

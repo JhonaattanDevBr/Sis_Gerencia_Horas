@@ -13,7 +13,7 @@ namespace GerenciaHoras.Model
     {
         BancoDeDados _chave = new BancoDeDados();
 
-        public bool GerarControleInicial(ControlContGenHoras _contControle)
+        public bool GerarControleInicial(ControlContGenHoras _ctlControle)
         {
             SqlConnection conn = new SqlConnection(_chave.chaveConexao);
 
@@ -26,13 +26,13 @@ namespace GerenciaHoras.Model
                 var pmtDia = cmd.CreateParameter();
                 pmtDia.ParameterName = "@dia";
                 pmtDia.SqlDbType = SqlDbType.Date;
-                pmtDia.Value = _contControle.DiaTrabalhado;
+                pmtDia.Value = _ctlControle.DiaTrabalhado;
                 cmd.Parameters.Add(pmtDia);
 
                 var pmtHora = cmd.CreateParameter();
                 pmtHora.ParameterName = "@horaInicial";
                 pmtHora.SqlDbType = SqlDbType.Time;
-                pmtHora.Value = _contControle.HoraInicial;
+                pmtHora.Value = _ctlControle.HoraInicial;
                 cmd.Parameters.Add(pmtHora);
 
                 if(cmd.ExecuteNonQuery() > 0)

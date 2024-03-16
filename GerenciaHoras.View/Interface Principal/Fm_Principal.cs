@@ -23,5 +23,11 @@ namespace GerenciaHoras.View
             Fm_Cadastro formCadastro = new Fm_Cadastro();
             formCadastro.ShowDialog();
         }
+
+        private void DgvTabelaProjetos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView tabela = new DataGridView();
+            // tabela.DataSource = 
+        }
     }
 }

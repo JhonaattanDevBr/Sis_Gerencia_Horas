@@ -147,6 +147,7 @@
             this.Name = "Fm_Cadastro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Projeto";
+            this.Enter += new System.EventHandler(this.Fm_Cadastro_Enter);
             this.ResumeLayout(false);
             this.PerformLayout();
 

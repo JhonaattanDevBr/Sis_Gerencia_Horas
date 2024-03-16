@@ -107,6 +107,7 @@
             this.DgvTabelaProjetos.Name = "DgvTabelaProjetos";
             this.DgvTabelaProjetos.Size = new System.Drawing.Size(520, 268);
             this.DgvTabelaProjetos.TabIndex = 5;
+            this.DgvTabelaProjetos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTabelaProjetos_CellContentClick);
             // 
             // Fml_SisGenHoras
             // 
